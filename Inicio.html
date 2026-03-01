@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Iglesia Koinonia</title>
+    <link rel="stylesheet" href="estilo_inicio.css">
+    <link rel="icon" type="image/x-icon" href="imagenes/Icono-Koinonia.ico">
+</head>
+<body class="fade-in">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="Inicio.html" class="logo-link">
+                <img class="logo" alt="Iglesia Koinonia San Marcos" src="imagenes/SM1.png">
+            </a>
+            
+
+            <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <div class="nav-content" id="nav-list">
+                <ul class="nav-links">
+                    <li><a href="usuario.html">Perfil</a></li>
+                    <li><a href="soporte.html">Soporte</a></li>
+                    <li><a href="index.html" class="btn-atras">Salir</a></li>
+                </ul>
+                
+                <div class="user-section">
+                    <span class="username">Admin Koinonia</span>
+                    <div class="user-avatar-wrapper">
+                        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Usuario" class="user-icon">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="events-hero">
+            <div class="hero-glass-card">
+                <div class="hero-text">
+                    <h1>Próximos Eventos y Cultos</h1>
+                    <p>Mantente al día con todas las actividades generales y servicios especiales de nuestra iglesia.</p>
+                    <a href="eventos.html" class="btn-main">Ver Eventos</a>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="section-title">Calendarios de Servicio</h2>
+
+        <div class="grid-calendarios">
+            
+            <a href="niños.html" class="card">
+                <div class="card-img" style="background-image: url('imagenes/kidKoino.jpg');"></div>
+                <div class="card-info">
+                    <h3>Niños</h3>
+                    <p>Servidores de Escuela Bíblica.</p>
+                    <span class="card-action">Ver más →</span>
+                </div>
+            </a>
+
+            <a href="sala-cuna.html" class="card">
+                <div class="card-img" style="background-image: url('imagenes/salaCuna.jpg');"></div>
+                <div class="card-info">
+                    <h3>Sala Cuna</h3>
+                    <p>Cuidado de los más pequeños.</p>
+                    <span class="card-action">Ver más →</span>
+                </div>
+            </a>
+
+            <a href="ujieres.html" class="card">
+                <div class="card-img" style="background-image: url('imagenes/ujieres.jpg');"></div>
+                <div class="card-info">
+                    <h3>Ujieres</h3>
+                    <p>Orden y Bienvenida.</p>
+                    <span class="card-action">Ver más →</span>
+                </div>
+            </a>
+
+            <a href="cocina.html" class="card">
+                <div class="card-img" style="background-image: url('imagenes/cocina.jpg');"></div>
+                <div class="card-info">
+                    <h3>Cocina</h3>
+                    <p>Equipo de cocina.</p>
+                    <span class="card-action">Ver más →</span>
+                </div>
+            </a>
+
+            <a href="frutas.html" class="card">
+                <div class="card-img" style="background-image: url('imagenes/frutas.jpg');"></div>
+                <div class="card-info">
+                    <h3>Frutas</h3>
+                    <p>Equipo de venta de frutas.</p>
+                    <span class="card-action">Ver más →</span>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Iglesia Koinonia San Marcos - Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const menuBtn = document.querySelector('#mobile-menu');
+        const navContent = document.querySelector('#nav-list');
+
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('is-active');
+            navContent.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

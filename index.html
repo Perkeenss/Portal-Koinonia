@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Koinonia</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="icon" type="image/x-icon" href="imagenes/Icono-Koinonia.ico">
+</head>
+
+<body class = "fade-in">
+    <!-- Menú de navegación -->
+    <nav>
+        <img class="logo" alt="lateral (2K)" src="imagenes/SM1.png" >
+        <ul class="links">
+            <li><a href="Vision.html">Visión</a></li>
+            <li><a href="Mision.html">Misión</a></li>
+            <li><a href="contactar.html">¿Cómo nos pueden contactar?</a></li>
+            <li><a href="Info2.html">Información</a></li>
+        </ul>
+        
+    </nav>
+
+    <!-- Contenedor principal -->
+    <div class="main-container">
+        <!-- Texto de bienvenida -->
+        <div class="welcome-text">
+            <h1>Haz click aquí para acceder a los devocionales</h1>
+            <p></p>
+            <a href="Devocional.html" class="cta-button">Click aquí</a>
+        </div>
+
+        <!-- Formulario de login -->
+        <div class="login-form">
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm" onsubmit="return validateLogin(event)">
+                <input type="text" id="username" placeholder="Usuario" required>
+                <input type="password" id="password" placeholder="Contraseña" required>
+                <button type="submit">Ingresar</button>
+            </form>
+            <p id="error-message" style="color: red; text-align: center;"></p> <!-- Mensaje de error -->
+        </div>
+    </div>
+    <!-- Botones de redes sociales -->
+    <div class="social-buttons">
+
+        <a href="https://www.facebook.com/profile.php?id=100066476361503&locale=es_LA" target="_blank">             
+<img src="imagenes/facebook.png" alt="Facebook" class="social-icon">           
+</a>
+        <a href="https://www.instagram.com" target="_blank">        
+<img src="imagenes/instagram.png" alt="Instagram" class="social-icon">
+        </a>
+        <a href="https://www.youtube.com" target="_blank">
+               
+            <img src="imagenes/youtube.png" alt="youtube" class="social-icon">
+                    </a>
+    
+</div>
+    <footer>
+        <p>&copy; Iglesia Koinonia San Marcos - Todos los derechos reservados.</p>
+    </footer>
+    <script>
+        function validateLogin(event) {
+            event.preventDefault(); // Prevenir el envío del formulario
+
+            // Obtener los valores de los campos
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Validar las credenciales
+            if (username === 'admin' && password === 'admin') {
+                // Redirigir a otra página si las credenciales son correctas
+                window.location.href = 'Inicio.html'; // Cambia esto a la URL que desees
+            } else {
+                // Mostrar mensaje de error si las credenciales son incorrectas
+                document.getElementById('error-message').innerText = 'Usuario y/o contraseña incorrectos.';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+/* --- FUNDAMENTOS --- */
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+}
+
+body {
+    background: url('imagenes/fondo5.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: white;
+    min-height: 100vh;
+}
+
+.fade-in { animation: fadeIn 0.8s ease-in; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* --- NAVBAR (Consistente) --- */
+.navbar {
+    width: 100%; height: 85px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    position: fixed; top: 0; z-index: 2000;
+    display: flex; justify-content: center;
+}
+
+.nav-container {
+    width: 92%; max-width: 1400px;
+    display: flex; justify-content: space-between; align-items: center;
+}
+
+.logo { height: 50px; }
+.nav-links { display: flex; list-style: none; gap: 20px; align-items: center; }
+.nav-links a { color: white; text-decoration: none; font-size: 15px; }
+
+.btn-atras {
+    background: #ff5733; padding: 10px 25px; border-radius: 50px; font-weight: bold;
+}
+
+/* --- LAYOUT DEL PERFIL --- */
+.main-content {
+    margin-top: 120px;
+    padding: 20px 5%;
+    max-width: 1200px;
+    margin-left: auto; margin-right: auto;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+}
+
+/* Cristalería (Glassmorphism) */
+.hero-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+/* Tarjeta de Usuario Principal */
+.profile-card {
+    text-align: center;
+    height: fit-content;
+}
+
+.avatar-edit {
+    position: relative;
+    width: 150px; height: 150px;
+    margin: 0 auto 20px;
+}
+
+.avatar-edit img {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    border: 4px solid #ff5733;
+    object-fit: cover;
+}
+
+.btn-change-photo {
+    position: absolute; bottom: 5px; right: 5px;
+    background: #ff5733; color: white;
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 20px;
+}
+
+.user-handle { color: rgba(255,255,255,0.6); margin-bottom: 15px; }
+
+.status-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,0,0,0.3);
+    padding: 8px 15px; border-radius: 50px;
+    font-size: 0.9rem; font-weight: bold;
+}
+
+.status-badge.active .dot {
+    width: 10px; height: 10px; background: #2ecc71;
+    border-radius: 50%; box-shadow: 0 0 10px #2ecc71;
+}
+
+.user-stats {
+    display: flex; justify-content: space-around;
+    margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+}
+
+.stat-value { display: block; font-size: 1.5rem; font-weight: bold; }
+.stat-label { font-size: 0.8rem; opacity: 0.7; }
+
+/* Secciones de Información */
+.details-container { display: flex; flex-direction: column; gap: 20px; }
+
+.info-section h3 { margin-bottom: 20px; font-size: 1.2rem; }
+
+.ministerio-tags { display: flex; gap: 10px; flex-wrap: wrap; }
+.tag {
+    background: #80173a; color: white;
+    padding: 8px 15px; border-radius: 10px; font-size: 0.9rem;
+}
+
+.section-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+
+.field label { display: block; font-size: 0.85rem; opacity: 0.7; margin-bottom: 8px; }
+
+.field input {
+    width: 100%; padding: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px; color: white; outline: none;
+}
+
+.field input:disabled { background: transparent; border-color: transparent; padding-left: 0; }
+
+.btn-edit {
+    background: #ff5733; border: none; color: white;
+    padding: 8px 15px; border-radius: 10px; cursor: pointer; font-weight: bold;
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: white; padding: 12px 20px; border-radius: 12px;
+    margin-right: 10px; margin-top: 10px; cursor: pointer; transition: 0.3s;
+}
+
+.btn-secondary:hover { background: #ff5733; }
+
+/* --- RESPONSIVO --- */
+@media (max-width: 960px) {
+    .profile-grid { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .navbar .nav-links { display: none; } /* Deberías implementar el menú hamburguesa activo */
+    .navbar .nav-links.active {
+        display: flex; flex-direction: column;
+        position: fixed; top: 85px; left: 0; width: 100%;
+        background: rgba(0,0,0,0.95); padding: 40px;
+    }
+}

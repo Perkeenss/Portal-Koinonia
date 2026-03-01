@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información - Portal Koinonia</title>
+    <link rel="stylesheet" href="info2.css">
+    <link rel="icon" type="image/x-icon" href="imagenes/Icono-Koinonia.ico">
+</head>
+<body class="fade-in">
+    <!-- Menú de navegación -->
+    <nav>
+        <img class="logo" alt="lateral (2K)" src="imagenes/SM1.png">
+        <ul class="links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="Vision.html">Visión</a></li>
+            <li><a href="Mision.html">Misión</a></li>
+            <li><a href="contactar.html">¿Cómo nos pueden contactar?</a></li>
+            <li><a href="Info2.html">Información</a></li>
+        </ul>
+    </nav>
+
+    <!-- Carrusel -->
+    <div class="carousel-container">
+        <div class="slides">
+            <div class="slide image1"></div>
+            <div class="slide image2"></div>
+            <div class="slide image3"></div>
+            <div class="slide image4"></div>
+        </div>
+
+        <!-- Flechas -->
+        <div class="arrows">
+            <button class="arrow prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="arrow next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+
+        <!-- Puntos de navegación -->
+        <div class="navigation-dots">
+            <span class="dot" onclick="showSlide(0)"></span>
+            <span class="dot" onclick="showSlide(1)"></span>
+            <span class="dot" onclick="showSlide(2)"></span>
+            <span class="dot" onclick="showSlide(3)"></span>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Iglesia Koinonia San Marcos - Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0; // Comenzar desde la primera imagen
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(index) {
+            currentSlide = index;
+            const slideWidth = document.querySelector('.carousel-container').clientWidth;
+            const offset = -slideWidth * currentSlide;
+            document.querySelector('.slides').style.transform = `translateX(${offset}px)`;
+
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentSlide].classList.add('active');
+        }
+
+        function moveSlide(step) {
+            currentSlide = (currentSlide + step + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        setInterval(() => {
+            moveSlide(1);
+        }, 10000); // Cambiar cada 10 segundos
+
+        window.addEventListener('resize', () => showSlide(currentSlide));
+
+        // Iniciar en la primera diapositiva
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,150 @@
+/* Agregar margen entre los elementos del menú */
+nav .links li {
+    margin-left: 0; /* Eliminar margen lateral para que el cuadro cubra todo el espacio */
+    display: inline-block; /* Cambiar a inline-block para que el padding funcione */
+}
+nav .links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 20px 10px; /* Aumentar el espaciado para que cubra más área */
+    transition: background-color 0.3s; /* Transición suave para el cambio de fondo */
+    display: block; /* Asegura que el enlace ocupe todo el espacio del <li> */
+}
+
+/* Cambiar fondo al pasar el mouse */
+nav .links li a:hover {
+    background-color: rgba(128, 23, 58,0.4); /* Cambia a un color de fondo más claro o deseado */
+    border-radius: 100px; /* Bordes redondeados */
+}
+/* Diseño general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: url('imagenes/fondo2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0; /* Inicialmente oculto */
+    animation: fadeIn 1s forwards; /* Animación de entrada */
+}
+@keyframes fadeIn {
+    to {
+        opacity: 1; /* Finaliza con opacidad completa */
+    }
+}
+.logo{
+    height: 100px;
+}
+/* Estilo del menú de navegación */
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con transparencia */
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+
+nav .links {
+    list-style: none;
+    display: flex;
+    margin-right: 30px;
+}
+/*Estilo para el logo */
+.logo{
+
+
+    width: 60vw;
+    
+
+
+    height: auto;
+
+
+    max-width: 100%; /* Para que no exceda el tamaño de la pantalla */
+    transition: width 0.3s ease; /* Transición suave al cambiar de tamaño */
+}
+/* Agregar margen entre los elementos del menú */
+nav .links li {
+    margin-left: 20px; /* Espacio entre los enlaces */
+}
+
+nav .links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px; /* Espaciado interno para el enlace */
+    transition: background-color 0.3s; /* Transición suave para el cambio de fondo */
+}
+
+/* Cambiar fondo al pasar el mouse */
+nav .links li a:hover {
+    background-color: rgba(128, 23, 58,0.4); /* Cambia a un color de fondo más claro o deseado */
+    border-radius: 5px; /* Añade bordes redondeados si lo deseas */
+}
+/* Agregar margen entre los elementos del menú */
+nav .links li {
+    margin-left: 20px; /* Espacio entre los enlaces */
+}
+/* Contenedor principal */
+.main-container {
+    width: 80%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 100px; /* Ajuste para la barra de navegación */
+}
+
+/* Estilo para el contenedor de ¿Quiénes somos? */
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 800px;
+}
+
+.about-text {
+    background-color: rgb(249, 249, 249, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.about-text h1 {
+    font-size: 36px;
+    color: #80173a;
+}
+
+.about-text p {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Estilo para el pie de página */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #80173a;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

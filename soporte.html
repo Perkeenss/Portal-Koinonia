@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soporte - Iglesia Koinonia</title>
+    <link rel="stylesheet" href="estilo_soporte.css">
+    <link rel="icon" type="image/x-icon" href="imagenes/Icono-Koinonia.ico">
+</head>
+<body class="fade-in">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="Inicio.html" class="logo-link">
+                <img class="logo" alt="Iglesia Koinonia San Marcos" src="imagenes/SM1.png">
+            </a>
+
+            <button class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <div class="nav-content" id="nav-list">
+                <ul class="nav-links">
+                    <li><a href="Inicio.html" class="nav-item">Inicio</a></li>
+                    <li><a href="usuario.html" class="nav-item">Perfil</a></li>
+                    <li><a href="soporte.html" class="nav-item">Soporte</a></li>
+                    <li><a href="index.html" class="btn-salir">Salir</a></li>
+                </ul>
+                
+                <div class="user-divider"></div>
+                
+                <a href="usuario.html" class="user-profile-link">
+                    <div class="user-section">
+                        <span class="username">Admin Koinonia</span>
+                        <div class="user-avatar-wrapper">
+                            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Usuario" class="user-icon">
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="support-header">
+            <h1>¿Cómo podemos ayudarte?</h1>
+            <div class="search-box">
+                <input type="text" placeholder="Busca tutoriales, errores o preguntas frecuentes...">
+                <button class="btn-search">Buscar</button>
+            </div>
+            <div class="popular-tags">
+                <span>Tendencias:</span>
+                <a href="#">Cambio de clave</a>
+                <a href="#">Error en calendario</a>
+                <a href="#">Ujieres</a>
+            </div>
+        </section>
+
+        <div class="support-grid">
+            <div class="help-card">
+                <div class="help-icon">🔐</div>
+                <h3>Cuenta y Acceso</h3>
+                <p>Problemas para iniciar sesión o recuperar tu contraseña.</p>
+            </div>
+            <div class="help-card">
+                <div class="help-icon">📅</div>
+                <h3>Calendarios</h3>
+                <p>Cómo ver tus turnos y reportar cambios de fecha.</p>
+            </div>
+            <div class="help-card">
+                <div class="help-icon">🛠️</div>
+                <h3>Reportar Fallo</h3>
+                <p>¿La página no carga o se ve mal? Cuéntanos aquí.</p>
+            </div>
+        </div>
+
+        <section class="support-container">
+            <div class="hero-glass-card">
+                <h2>Envíanos un Reporte Directo</h2>
+                <form class="support-form">
+                    <div class="form-group">
+                        <label>Nombre Completo</label>
+                        <input type="text" placeholder="Escribe tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label>Tu Correo Electrónico</label>
+                        <input type="email" placeholder="correo@ejemplo.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Asunto del Problema</label>
+                        <select>
+                            <option>Error en la página</option>
+                            <option>Sugerencia de mejora</option>
+                            <option>Duda con mi horario</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Mensaje Detallado</label>
+                        <textarea rows="4" placeholder="Describe el error paso a paso..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-main">Enviar Mensaje de Soporte</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Iglesia Koinonia San Marcos</p>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('mobile-menu');
+        const navContent = document.getElementById('nav-list');
+        menuBtn.addEventListener('click', () => {
+            navContent.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

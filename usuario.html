@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario - Iglesia Koinonia</title>
+    <link rel="stylesheet" href="estilo_usuario.css">
+    <link rel="icon" type="image/x-icon" href="imagenes/Icono-Koinonia.ico">
+</head>
+<body class="fade-in">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="Inicio.html" class="logo-link">
+                <img class="logo" alt="Logo Koinonia" src="imagenes/SM1.png">
+            </a>
+            <button class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="nav-content" id="nav-list">
+                <ul class="nav-links">
+                    <li><a href="Inicio.html">Inicio</a></li>
+                    <li><a href="soporte.html">Soporte</a></li>
+                    <li><a href="index.html" class="btn-atras">Salir</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="profile-grid">
+            
+            <section class="profile-card hero-glass">
+                <div class="avatar-edit">
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Usuario" id="profile-img">
+                    <label for="upload-photo" class="btn-change-photo">📷</label>
+                    <input type="file" id="upload-photo" hidden>
+                </div>
+                <h1 id="user-display-name">Admin Koinonia</h1>
+                <p class="user-handle">@admin_sanmarcos</p>
+                
+                <div class="status-badge active">
+                    <span class="dot"></span> Servidor Activo
+                </div>
+
+                <div class="user-stats">
+                    <div class="stat">
+                        <span class="stat-value">3</span>
+                        <span class="stat-label">Ministerios</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">2023</span>
+                        <span class="stat-label">Miembro desde</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="details-container">
+                
+                <section class="info-section hero-glass">
+                    <h3>🛡️ Ministerios en Servicio</h3>
+                    <div class="ministerio-tags">
+                        <span class="tag">Escuela de Niños</span>
+                        <span class="tag">Ujieres</span>
+                        <span class="tag">Multimedia</span>
+                    </div>
+                </section>
+
+                <section class="info-section hero-glass">
+                    <div class="section-header">
+                        <h3>📋 Información Personal</h3>
+                        <button class="btn-edit" onclick="toggleEdit()">Editar Datos</button>
+                    </div>
+                    <form class="profile-form" id="personal-form">
+                        <div class="form-grid">
+                            <div class="field">
+                                <label>Nombre Completo</label>
+                                <input type="text" value="Admin Koinonia San Marcos" disabled>
+                            </div>
+                            <div class="field">
+                                <label>Fecha de Nacimiento</label>
+                                <input type="date" id="birthdate" value="1995-05-15" onchange="calculateAge()" disabled>
+                            </div>
+                            <div class="field">
+                                <label>Edad</label>
+                                <input type="text" id="age-display" value="--" disabled>
+                            </div>
+                            <div class="field">
+                                <label>Teléfono</label>
+                                <input type="tel" value="+503 7000-0000" disabled>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="info-section hero-glass">
+                    <h3>🔐 Seguridad</h3>
+                    <div class="security-options">
+                        <button class="btn-secondary">Cambiar Contraseña</button>
+                        <button class="btn-secondary">Activar Verificación en Dos Pasos</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Cálculo automático de Edad
+        function calculateAge() {
+            const birthdate = document.getElementById('birthdate').value;
+            if(!birthdate) return;
+            const birthday = new Date(birthdate);
+            const today = new Date();
+            let age = today.getFullYear() - birthday.getFullYear();
+            const m = today.getMonth() - birthday.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthday.getDate())) {
+                age--;
+            }
+            document.getElementById('age-display').value = age + " años";
+        }
+
+        // Simulación de edición
+        function toggleEdit() {
+            const inputs = document.querySelectorAll('#personal-form input');
+            const btn = document.querySelector('.btn-edit');
+            const isEditing = btn.innerText === "Guardar Cambios";
+            
+            inputs.forEach(input => {
+                if(input.id !== 'age-display') input.disabled = isEditing;
+            });
+
+            btn.innerText = isEditing ? "Editar Datos" : "Guardar Cambios";
+            btn.classList.toggle('saving');
+        }
+
+        // Menú móvil
+        const menuBtn = document.querySelector('#mobile-menu');
+        const navList = document.querySelector('#nav-list');
+        menuBtn.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        window.onload = calculateAge;
+    </script>
+</body>
+</html>

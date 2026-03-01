@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario Ujieres | Koinonia</title>
+    <link rel="stylesheet" href="calendarios.css">
+    <link rel="icon" type="image/x-icon" href="imagenes/Icono-Koinonia.ico">
+</head>
+<body class="fade-in">
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="Inicio.html" class="logo-link">
+            <img class="logo" alt="Iglesia Koinonia San Marcos" src="imagenes/SM1.png">
+        </a>
+
+        <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <div class="nav-content" id="nav-list">
+            <ul class="nav-links">
+                <li><a href="Inicio.html" class="nav-item">Inicio</a></li>
+                <li><a href="usuario.html" class="nav-item">Perfil</a></li>
+                <li><a href="soporte.html" class="nav-item">Soporte</a></li>
+                <li><a href="index.html" class="btn-salir">Salir</a></li>
+            </ul>
+            
+            <div class="user-divider"></div>
+            <a href="usuario.html" class="user-profile-link">
+                <div class="user-section">
+                    <span class="username">Admin Koinonia</span>
+                    <div class="user-avatar-wrapper">
+                        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Usuario" class="user-icon">
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</nav>
+
+    <div class="calendar-wrapper">
+        <h2 class="calendar-title">Ministerio de Ujieres: Diciembre 2025</h2>
+        <div class="calendar-container" id="calendarGrid">
+            </div>
+    </div>
+
+    <div id="miModal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="modal-close" onclick="cerrarInfo()">&times;</span>
+            <h3 id="fechaModal">Fecha de Servicio</h3>
+            <div class="divider"></div>
+            <p id="servidoresModal">Cargando ujieres...</p>
+        </div>
+    </div>
+
+    <script>
+        // LISTA DE SERVIDORES UJIERES
+        // Agrega aquí los días y nombres de los hermanos encargados
+        const serviciosUjieres = {
+            3: "Hermano Carlos (Puerta)<br>Hermano José (Pasillo)",
+            7: "Equipo A (Servicio Dominical)",
+            10: "Hermano Luis<br>Hermano Roberto",
+            14: "Equipo B (Servicio Dominical)",
+            17: "Hermana Marta<br>Hermana Elena",
+            21: "Equipo C (Servicio Dominical)",
+            24: "Equipo Especial Navidad",
+            28: "Equipo D (Servicio Dominical)",
+            31: "Equipo Especial Fin de Año"
+        };
+
+        // Lógica del Menú Móvil
+        const menu = document.querySelector('#mobile-menu');
+        const menuLinks = document.querySelector('#nav-list');
+        menu.addEventListener('click', () => {
+            menu.classList.toggle('is-active');
+            menuLinks.classList.toggle('active');
+        });
+
+        // Generar Calendario Diciembre 2025
+        function renderCalendar() {
+            const grid = document.getElementById('calendarGrid');
+            const diasSemana = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+            grid.innerHTML = ''; 
+
+            diasSemana.forEach(dia => {
+                const header = document.createElement('div');
+                header.className = 'day-header';
+                header.innerText = dia;
+                grid.appendChild(header);
+            });
+
+            const startingDay = 1; // Diciembre 2025 inicia Lunes
+            const daysInMonth = 31;
+
+            for (let i = 0; i < startingDay; i++) {
+                const empty = document.createElement('div');
+                empty.className = 'calendar-day empty';
+                grid.appendChild(empty);
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayBox = document.createElement('div');
+                dayBox.className = 'calendar-day';
+                
+                if (serviciosUjieres[day]) {
+                    dayBox.classList.add('event');
+                    dayBox.onclick = () => abrirInfo(`Diciembre ${day}`, serviciosUjieres[day]);
+                    dayBox.innerHTML = `<span class="day-num">${day}</span><div class="event-tag">Servicio</div>`;
+                } else {
+                    dayBox.innerHTML = `<span class="day-num">${day}</span>`;
+                }
+                grid.appendChild(dayBox);
+            }
+        }
+
+        function abrirInfo(fecha, info) {
+            document.getElementById('fechaModal').innerText = fecha;
+            document.getElementById('servidoresModal').innerHTML = info;
+            document.getElementById('miModal').classList.add('active');
+        }
+
+        function cerrarInfo() {
+            document.getElementById('miModal').classList.remove('active');
+        }
+
+        window.onload = renderCalendar;
+    </script>
+</body>
+</html>

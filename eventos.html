@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos y Cultos | Koinonia</title>
+    <link rel="stylesheet" href="calendarios.css">
+    <link rel="icon" type="image/x-icon" href="imagenes/Icono-Koinonia.ico">
+</head>
+<body class="fade-in">
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="Inicio.html" class="logo-link">
+            <img class="logo" alt="Iglesia Koinonia San Marcos" src="imagenes/SM1.png">
+        </a>
+
+        <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <div class="nav-content" id="nav-list">
+            <ul class="nav-links">
+                <li><a href="Inicio.html" class="nav-item">Inicio</a></li>
+                <li><a href="usuario.html" class="nav-item">Perfil</a></li>
+                <li><a href="soporte.html" class="nav-item">Soporte</a></li>
+                <li><a href="index.html" class="btn-salir">Salir</a></li>
+            </ul>
+            
+            <div class="user-divider"></div>
+            <a href="usuario.html" class="user-profile-link">
+                <div class="user-section">
+                    <span class="username">Admin Koinonia</span>
+                    <div class="user-avatar-wrapper">
+                        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Usuario" class="user-icon">
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</nav>
+
+    <div class="calendar-wrapper">
+        <h2 class="calendar-title">Eventos y Cultos: Diciembre 2025</h2>
+        <div class="calendar-container" id="calendarGrid">
+            </div>
+    </div>
+
+    <div id="miModal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="modal-close" onclick="cerrarInfo()">&times;</span>
+            <h3 id="fechaModal">Fecha del Evento</h3>
+            <div class="divider"></div>
+            <p id="servidoresModal">Cargando detalles...</p>
+        </div>
+    </div>
+
+    <script>
+        // LISTA DE EVENTOS Y CULTOS
+        // Aquí puedes agregar eventos en CUALQUIER día (Miércoles, Sábados, Domingos, etc.)
+        const serviciosEventos = {
+            3: { titulo: "Culto de Oración", detalle: "Hora: 6:30 PM<br>Predica: Pastor General" },
+            7: { titulo: "Culto Dominical", detalle: "Hora: 10:00 AM<br>Tema: Serie de Adviento" },
+            10: { titulo: "Culto de Oración", detalle: "Hora: 6:30 PM<br>Predica: Pastor General" },
+            13: { titulo: "Evento de Jóvenes", detalle: "Día: Sábado<br>Hora: 4:00 PM<br>Lugar: Salón Principal" },
+            14: { titulo: "Culto Dominical", detalle: "Hora: 10:00 AM<br>Santa Cena" },
+            17: { titulo: "Culto de Oración", detalle: "Hora: 6:30 PM<br>Predica: Pastor General" },
+            20: { titulo: "Ensayo de Coro", detalle: "Día: Sábado<br>Hora: 2:00 PM" },
+            21: { titulo: "Culto Dominical", detalle: "Hora: 10:00 AM<br>Tema: Serie de Adviento" },
+            24: { titulo: "Cena de Navidad", detalle: "Evento Especial de Nochebuena<br>Hora: 7:00 PM" },
+            28: { titulo: "Culto Dominical", detalle: "Hora: 10:00 AM<br>Tema: Serie de Adviento" },
+            31: { titulo: "Vigilia Fin de Año", detalle: "Hora: 9:00 PM<br>Dando gracias por el 2025" }
+        };
+
+        // Lógica del Menú Móvil
+        const menu = document.querySelector('#mobile-menu');
+        const menuLinks = document.querySelector('#nav-list');
+        menu.addEventListener('click', () => {
+            menu.classList.toggle('is-active');
+            menuLinks.classList.toggle('active');
+        });
+
+        // Generar Calendario Diciembre 2025
+        function renderCalendar() {
+            const grid = document.getElementById('calendarGrid');
+            const diasSemana = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+            grid.innerHTML = ''; 
+
+            diasSemana.forEach(dia => {
+                const header = document.createElement('div');
+                header.className = 'day-header';
+                header.innerText = dia;
+                grid.appendChild(header);
+            });
+
+            const startingDay = 1; // Diciembre 2025 inicia Lunes
+            const daysInMonth = 31;
+
+            for (let i = 0; i < startingDay; i++) {
+                const empty = document.createElement('div');
+                empty.className = 'calendar-day empty';
+                grid.appendChild(empty);
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayBox = document.createElement('div');
+                dayBox.className = 'calendar-day';
+                
+                if (serviciosEventos[day]) {
+                    dayBox.classList.add('event');
+                    dayBox.onclick = () => abrirInfo(`Diciembre ${day}`, `<strong>${serviciosEventos[day].titulo}</strong><br><br>${serviciosEventos[day].detalle}`);
+                    dayBox.innerHTML = `<span class="day-num">${day}</span><div class="event-tag">Evento</div>`;
+                } else {
+                    dayBox.innerHTML = `<span class="day-num">${day}</span>`;
+                }
+                grid.appendChild(dayBox);
+            }
+        }
+
+        function abrirInfo(fecha, info) {
+            document.getElementById('fechaModal').innerText = fecha;
+            document.getElementById('servidoresModal').innerHTML = info;
+            document.getElementById('miModal').classList.add('active');
+        }
+
+        function cerrarInfo() {
+            document.getElementById('miModal').classList.remove('active');
+        }
+
+        window.onload = renderCalendar;
+    </script>
+</body>
+</html>
